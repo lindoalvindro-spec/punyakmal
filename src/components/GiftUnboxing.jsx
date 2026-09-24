@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import confetti from 'canvas-confetti';
-import { Sparkles, Gift, Heart, Star } from 'lucide-react';
+import { Sparkles, Heart, Star } from 'lucide-react';
 
 export default function GiftUnboxing({ onOpen }) {
   const containerRef = useRef(null);
@@ -12,7 +12,6 @@ export default function GiftUnboxing({ onOpen }) {
   const auraRef = useRef(null);
   const [isOpening, setIsOpening] = useState(false);
   const [burstFlowers, setBurstFlowers] = useState([]);
-  const flowerRefs = useRef([]);
 
   const FLOWER_ASSETS = [
     '/bunga 1 no bg.png',
@@ -229,7 +228,7 @@ export default function GiftUnboxing({ onOpen }) {
           }}
         >
           <Sparkles size={14} color="#38bdf8" />
-          <span style={{ fontSize: '0.85rem', color: '#e0f2fe', fontWeight: '500' }}>Surprise Unboxing</span>
+          <span style={{ fontSize: '0.85rem', color: '#e0f2fe', fontWeight: '500' }}>Kejutan Spesial</span>
           <Sparkles size={14} color="#38bdf8" />
         </div>
 
@@ -243,7 +242,7 @@ export default function GiftUnboxing({ onOpen }) {
             lineHeight: '1.3',
           }}
         >
-          {isOpening ? '✨ Opening your gift... ✨' : 'Tap the gift box to open it 🎁'}
+          {isOpening ? '✨ Membuka kado spesialmu... ✨' : 'Ketuk kotak kado untuk membukanya 🎁'}
         </h2>
       </div>
 
@@ -380,7 +379,7 @@ export default function GiftUnboxing({ onOpen }) {
         }}
       >
         <Heart size={14} fill="var(--neon-pink)" color="var(--neon-pink)" />
-        <span>Sent with love for Lucyna Majewska 🤍</span>
+        <span>Dipersiapkan dengan tulus untuk Akmal Rachmadi 🤍</span>
         <Heart size={14} fill="var(--neon-pink)" color="var(--neon-pink)" />
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { Heart, Delete, X, Sparkles, KeyRound } from 'lucide-react';
+import { Sparkles, Delete, X, KeyRound } from 'lucide-react';
 
 export default function PasscodeScreen({ onUnlock }) {
   const containerRef = useRef(null);
@@ -9,14 +9,12 @@ export default function PasscodeScreen({ onUnlock }) {
   const titleRef = useRef(null);
   const dotsRef = useRef(null);
   const keypadRef = useRef(null);
-  const hintRef = useRef(null);
   const iconRingRef = useRef(null);
   
   const [pin, setPin] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
-  const [sparks, setSparks] = useState([]);
   
-  const CORRECT_PIN = '190826';
+  const CORRECT_PIN = '250988';
   const PIN_LENGTH = 6;
 
   const bgParticles = Array.from({ length: 14 }).map((_, i) => ({
@@ -58,23 +56,7 @@ export default function PasscodeScreen({ onUnlock }) {
     });
   }, { scope: containerRef });
 
-  const spawnSparkleEffect = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    const newSpark = {
-      id: Date.now() + Math.random(),
-      x,
-      y,
-    };
-    
-    setSparks((prev) => [...prev.slice(-8), newSpark]);
-  };
-
   const handleKeyPress = (e, num) => {
-    spawnSparkleEffect(e);
-
     if (pin.length < PIN_LENGTH) {
       const newPin = pin + num;
       setPin(newPin);
@@ -99,22 +81,20 @@ export default function PasscodeScreen({ onUnlock }) {
     }
   };
 
-  const handleDelete = (e) => {
-    spawnSparkleEffect(e);
+  const handleDelete = () => {
     if (pin.length > 0) {
       setPin(pin.slice(0, -1));
       setErrorMsg('');
     }
   };
 
-  const handleClear = (e) => {
-    spawnSparkleEffect(e);
+  const handleClear = () => {
     setPin('');
     setErrorMsg('');
   };
 
   const verifyPin = (enteredPin) => {
-    if (enteredPin === CORRECT_PIN || enteredPin === '190826' || enteredPin === '1908' || enteredPin === '1308' || enteredPin === '1234') {
+    if (enteredPin === CORRECT_PIN || enteredPin === '250988') {
       const tl = gsap.timeline();
       
       tl.to(dotsRef.current, {
@@ -137,7 +117,7 @@ export default function PasscodeScreen({ onUnlock }) {
         }
       });
     } else {
-      setErrorMsg('Incorrect passcode. Please try again 🤍');
+      setErrorMsg('Kode pin salah. Silakan coba lagi 🤍');
       
       gsap.to(dotsRef.current, {
         x: [-12, 12, -8, 8, -4, 4, 0],
@@ -290,7 +270,7 @@ export default function PasscodeScreen({ onUnlock }) {
               letterSpacing: '0.5px',
             }}
           >
-            For You, Lucyna
+            Spesial Untukmu, Akmal
           </h2>
           <p
             className="neon-text-subtle"
@@ -300,7 +280,7 @@ export default function PasscodeScreen({ onUnlock }) {
               opacity: 0.9,
             }}
           >
-            Enter our secret passcode
+            Masukkan kode pin rahasia
           </p>
           <p
             style={{
@@ -311,7 +291,7 @@ export default function PasscodeScreen({ onUnlock }) {
               marginTop: '4px',
             }}
           >
-            Clue: 190826 ❤️
+            Petunjuk: 250988 🤍
           </p>
         </div>
 
@@ -415,7 +395,7 @@ export default function PasscodeScreen({ onUnlock }) {
           {/* Clear Button */}
           <button
             className="keypad-btn-fancy"
-            onClick={(e) => handleClear(e)}
+            onClick={handleClear}
             style={{
               position: 'relative',
               width: '56px',
@@ -467,7 +447,7 @@ export default function PasscodeScreen({ onUnlock }) {
           {/* Backspace Delete Button */}
           <button
             className="keypad-btn-fancy"
-            onClick={(e) => handleDelete(e)}
+            onClick={handleDelete}
             style={{
               position: 'relative',
               width: '56px',

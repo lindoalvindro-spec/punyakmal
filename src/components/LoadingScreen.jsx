@@ -297,7 +297,7 @@ export default function LoadingScreen({ onComplete }) {
             lineHeight: '1.3',
           }}
         >
-          {isFinished ? 'Ready For Something Special' : 'Preparing something special for you...'}
+          {isFinished ? 'Sebuah Kejutan Spesial Siap Untukmu' : 'Menyiapkan sesuatu yang istimewa untukmu...'}
         </h2>
 
         <p
@@ -309,7 +309,7 @@ export default function LoadingScreen({ onComplete }) {
             marginBottom: '20px',
           }}
         >
-          {isFinished ? 'Click the button below to start ✨' : 'Made with love & special memories 💙'}
+          {isFinished ? 'Klik tombol di bawah untuk membukanya ✨' : 'Dipersiapkan dengan tulus & penuh rasa syukur 💙'}
         </p>
 
         {/* Neon Progress Bar Line */}
@@ -426,7 +426,7 @@ export default function LoadingScreen({ onComplete }) {
               />
 
               <Sparkles size={16} color="#38bdf8" style={{ filter: 'drop-shadow(0 0 4px #38bdf8)' }} />
-              <span style={{ textShadow: '0 0 8px rgba(0,0,0,0.5)', letterSpacing: '0.5px' }}>Open Surprise</span>
+              <span style={{ textShadow: '0 0 8px rgba(0,0,0,0.5)', letterSpacing: '0.5px' }}>Buka Kejutan</span>
               <Heart size={16} fill="#fff" style={{ filter: 'drop-shadow(0 0 6px #fff)' }} />
             </button>
           </div>
